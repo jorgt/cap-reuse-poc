@@ -1,0 +1,55 @@
+{
+  "name": "treatments",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "common": "file:common-1.0.0.tgz",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "sqlite3": "^5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch --port 4004"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "hana_db": {
+        "kind": "sql"
+      },
+      "local_db": {
+        "kind": "sqlite",
+        "model": "*"
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "common": {
+        "kind": "odata",
+        "model": "srv/external/common",
+        "[development]": {
+          "credentials": {
+            "url": "https://port4005-workspaces-ws-tg9cc.ap10.applicationstudio.cloud.sap/common"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "common"
+          }
+        }
+      }
+    },
+    "hana": {
+      "syntax": "hdi",
+      "deploy-format": "hdbtable"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "express": "^4",
+    "hdb": "^0.19.0"
+  },
+  "devDependencies": {
+    "sqlite3": "^5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch --port 4005"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "hana_db": {
+        "kind": "sql"
+      },
+      "local_db": {
+        "kind": "sqlite",
+        "model": "*"
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      }
+    },
+    "hana": {
+      "syntax": "hdi",
+      "deploy-format": "hdbtable"
+    }
+  }
+}
